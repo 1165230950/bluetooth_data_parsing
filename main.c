@@ -10,6 +10,7 @@ void error()
 
 int main(int argc, char *argv[])
 {
+int ch;
 	if(argc != 2) error();
 	FILE *fp = fopen(argv[1], "r");
 	if(fp == NULL){
@@ -22,9 +23,12 @@ int main(int argc, char *argv[])
 		fclose(fp);
 		return 0;
 	}else{
-		printf("%s %s %s %s\n", head->name,  head->number, head->date_time, head->state);
-		fclose(fp);
+		int i;
+		for(i=0; i< head->sign+1; i++){
+			printf("%s %s %s %s\n", head->name[i],  head->number[i], head->date_time[i], head->state[i]);
+		}
 	}
+	close(fp);
 
 	return 0;
 }
